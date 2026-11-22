@@ -1,3 +1,6 @@
-chrome.browserAction.onClicked.addListener((tab) => {
-  chrome.tabs.executeScript(tab.id, { file: "inject.js" });
-})
+chrome.action.onClicked.addListener((tab) => {
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: ["inject.js"]
+  });
+});
